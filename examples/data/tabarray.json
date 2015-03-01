@@ -33,7 +33,7 @@
   "form": [
     {
       "type": "help",
-      "helpvalue": "<h4>Tabbed Array Example</h4><p>Tab arrays can have tabs to the left, top or right.</p>"
+      "helpvalue": "<h4>This tabarray fails when `title` has spaces:</p>"
     },
     {
       "key": "comments",
@@ -43,7 +43,7 @@
 	  "style": {
 		"remove": "btn-danger"
 	  },
-      "title": "value.name || 'Tab '+$index",
+      "title": "Breaks when title has spaces",
       "items": [
         "comments[].name",
         "comments[].email",

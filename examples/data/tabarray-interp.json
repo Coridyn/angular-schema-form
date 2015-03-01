@@ -1,0 +1,60 @@
+{
+  "schema": {
+    "type": "object",
+    "title": "Comment",
+    "properties": {
+      "fixed": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "interpolation": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": ["name"]
+        }
+      }
+    }
+  },
+  "form": [
+    {
+      "type": "help",
+      "helpvalue": "<h4>This tabarray works when the `title` has spaces:</p>"
+    }, 
+    {
+      "key": "fixed",
+      "type": "tabarrayInterp",
+      "title": "My name",
+      "items": [
+        "fixed[].name"
+      ]
+    },
+    {
+      "type": "help",
+      "helpvalue": "<h4>This tabarray uses interpolation</p>"
+    },
+    {
+      "key": "interpolation",
+      "type": "tabarrayInterp",
+      "title": "{{value.name || 'Tab '+$index}}",
+      "items": [
+        "interpolation[].name"
+      ]
+    }
+  ]
+}

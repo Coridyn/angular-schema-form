@@ -97,17 +97,29 @@
 <script type="text/javascript">
 
 // To test the tinymce addon, uncomment the files above and inject 'tx-tinymce' below.
-angular.module('test',['schemaForm','ui.ace']).controller('TestCtrl', function($scope,$http){
+angular.module('test',['schemaForm','ui.ace'])
+.config(['schemaFormDecoratorsProvider', function(schemaFormDecoratorsProvider){
+  
+  // schemaFormDecoratorsProvider.createDecorator('custom', {
+  //   tabarrayFixed: 'directives/decorators/bootstrap/tabarray-fixed.html'
+  // }, [function(form){
+  //   if (form.type == 'tabarray'){
+  //     return 'directives/decorators/bootstrap/tabarray-fixed.html'
+  //   }
+  // }]);
+
+  schemaFormDecoratorsProvider.addMapping(
+    'bootstrapDecorator', 
+    'tabarrayInterp',
+    'directives/decorators/bootstrap/tabarray-interp.html'
+  );
+  
+}])
+.controller('TestCtrl', function($scope,$http){
 
   $scope.tests = [
-    { name: "Simple", data: 'data/simple.json' },
-    { name: "Basic JSON Schema Type", data: 'data/types.json' },
-    { name: "Bootstrap Grid", data: 'data/grid.json' },
-    { name: "Complex Key Support", data: 'data/complex-keys.json' },
-    { name: "Array", data: 'data/array.json' },
-    { name: "Tab Array", data: 'data/tabarray.json' },
-    { name: "TitleMap Examples", data: 'data/titlemaps.json' },
-    { name: "Kitchen Sink", data: 'data/sink.json' }
+    { name: "Tab Array (Fixed)", data: 'data/tabarray-interp.json' },
+    { name: "Tab Array (Broken)", data: 'data/tabarray.json' }
   ];
 
   $scope.selectedTest = $scope.tests[0];
